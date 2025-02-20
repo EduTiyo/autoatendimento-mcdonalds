@@ -1,6 +1,6 @@
 "use client"
 
-import { MenuCategory, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { ClockIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
