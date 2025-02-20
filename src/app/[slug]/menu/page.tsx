@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { db } from "@/lib/prisma";
 
 import ConsumptionMethodOption from "../components/consumption-method-option";
+import RestaurantCategories from "./components/categories";
 import RestaurantHeader from "./components/headers";
 
 interface RestaurantMenuPageProps {
@@ -33,11 +34,19 @@ const RestaurantMenuPage = async ({
   if (!isConsumptionMethodValid(consumptionMethod)) {
     return notFound();
   }
-  const restaurant = await db.restaurant.findUnique({ where: { slug } });
+  const restaurant = await db.restaurant.findUnique({
+    where: { slug },
+    include: {
+      menuCategories: {
+        include: { products: true },
+      },
+    },
+  });
   if (!restaurant) return notFound();
   return (
     <div>
       <RestaurantHeader restaurant={restaurant} />
+      <RestaurantCategories restaurant={restaurant} />
     </div>
   );
 };
