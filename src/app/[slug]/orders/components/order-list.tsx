@@ -1,11 +1,12 @@
 import { Prisma } from "@prisma/client";
-import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
+import { ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { formatCurrency } from "@/helpers/format-currency";
+
+import { BackButton } from "./backButton";
 
 interface OrderListProps {
     orders: Prisma.OrderGetPayload<{
@@ -13,7 +14,7 @@ interface OrderListProps {
             restaurant: {
                 select: {
                     name: true,
-                    avatarImageUrl: true
+                    avatarImageUrl: true,
                 };
             };
             orderProducts: {
@@ -37,9 +38,7 @@ interface OrderListProps {
 const OrderList = ({ orders }: OrderListProps) => {
     return ( 
         <div className="space-y-6 p-6">
-            <Button className="rounded-full" variant="secondary" size="icon">
-                <ChevronLeftIcon />
-            </Button>
+            <BackButton />
             <div className="flex items-center gap-3">
                 <ScrollTextIcon />
                 <h2 className="text-lg font-semibold">Meus Pedidos</h2>
