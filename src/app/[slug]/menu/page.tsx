@@ -1,18 +1,8 @@
-import { ConsumptionMethod } from "@prisma/client";
-import {
-  ChevronLeftIcon,
-  ChevronsLeftIcon,
-  ScrollTextIcon,
-} from "lucide-react";
-import { iconNames } from "lucide-react/dynamic";
-import { ResponseLimit } from "next";
-import Image from "next/image";
+
 import { notFound } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
 import { db } from "@/lib/prisma";
 
-import ConsumptionMethodOption from "../components/consumption-method-option";
 import RestaurantCategories from "./components/categories";
 import RestaurantHeader from "./components/headers";
 

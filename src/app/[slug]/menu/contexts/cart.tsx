@@ -1,7 +1,6 @@
 "use client"
 
 import { Product } from "@prisma/client";
-import PreviousMap_ from "postcss/lib/previous-map";
 import { createContext, ReactNode, useState } from "react";
 
 export interface CartProduct extends Pick<Product, 'id' | 'name' | 'price' | 'imageUrl'>{

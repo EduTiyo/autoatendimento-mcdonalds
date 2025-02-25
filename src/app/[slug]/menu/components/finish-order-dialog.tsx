@@ -1,5 +1,15 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ConsumptionMethod } from "@prisma/client";
+import { Loader2Icon } from "lucide-react";
+import { useParams, useSearchParams } from "next/navigation";
+import { useContext, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { PatternFormat } from 'react-number-format'
+import { toast } from "sonner";
+import { z } from "zod"
+
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -11,21 +21,12 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-
-import { z } from "zod"
-import { isValidCpf } from "../helpers/cpf";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { PatternFormat } from 'react-number-format'
+
 import { createOrder } from "../actions/create-order";
-import { useParams, useSearchParams } from "next/navigation";
-import { ConsumptionMethod } from "@prisma/client";
-import { useContext, useTransition } from "react";
 import { CartContext } from "../contexts/cart";
-import { toast } from "sonner";
-import { Loader2Icon } from "lucide-react";
+import { isValidCpf } from "../helpers/cpf";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -123,7 +124,7 @@ const FinishOrderDialog = ({open, onOpenChange}: FinishOrderDialogProps) => {
             <DrawerFooter>
               <Button type="submit" variant="destructive" className="rounded-full" disabled={isPending}>{isPending && <Loader2Icon className="animate-spin"/>}Finalizar</Button>
                 <DrawerClose asChild>
-                  <Button variant="outline" className="rounded-full w-full">Cancel</Button>
+                  <Button variant="outline" className="rounded-full w-full">Cancelar</Button>
                 </DrawerClose>
             </DrawerFooter>
           </form>

@@ -1,17 +1,16 @@
 "use client"
 
+import { Prisma } from "@prisma/client";
+import { ChefHatIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import Image from "next/image";
+import { useContext, useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { formatCurrency } from "@/helpers/format-currency";
-import { Prisma, Product, Restaurant } from "@prisma/client";
-import { ChefHatIcon, ChevronLeftCircleIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { lightningCssTransform } from "next/dist/build/swc/generated-native";
-import Image from "next/image";
-import { useContext, useState } from "react";
-import { CartContext } from "../../contexts/cart";
-import { isPageStatic } from "next/dist/build/utils";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+
 import CartSheet from "../../components/cart-sheet";
+import { CartContext } from "../../contexts/cart";
 
 interface ProductDetailsProps {
     product: Prisma.ProductGetPayload<{ include: { restaurant: {
