@@ -44,11 +44,11 @@ const CpfForm = () => {
         router.back();
     }
     return (
-        <Drawer open>
+        <Drawer open onOpenChange={handleCancel}>
         <DrawerContent>
             <DrawerHeader>
-            <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-            <DrawerDescription>This action cannot be undone.</DrawerDescription>
+            <DrawerTitle>Visualizar Pedidos?</DrawerTitle>
+            <DrawerDescription>Insira seu CPF abaixo para visualizar seus pedidos</DrawerDescription>
             </DrawerHeader>
             <div className="p-5">
             <Form {...form}>
